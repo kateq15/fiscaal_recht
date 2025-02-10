@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welke specialisatie past bij jou?</title>
+    <script>
+        function calculateResult() {
+            let directTax = 0, indirectTax = 0, taxTech = 0;
+            
+            const answers = document.querySelectorAll('input[type="radio"]:checked');
+            answers.forEach(answer => {
+                if (answer.value === "direct") directTax++;
+                if (answer.value === "indirect") indirectTax++;
+                if (answer.value === "tech") taxTech++;
+            });
+            
+            let result = "";
+            if (directTax > indirectTax && directTax > taxTech) result = "Direct Tax";
+            else if (indirectTax > directTax && indirectTax > taxTech) result = "Indirect Tax";
+            else if (taxTech > directTax && taxTech > indirectTax) result = "Tax & Technology";
+            else result = "Een combinatie van meerdere specialisaties!";
+            
+            document.getElementById("result").innerText = "Jouw ideale specialisatie: " + result;
+        }
+    </script>
+</head>
+<body>
+    <h1>Welke specialisatie past bij jou?</h1>
+    <form>
+        <p>1. Waar ligt jouw interesse binnen het belastingrecht?</p>
+        <label><input type="radio" name="q1" value="direct"> Inkomsten- en vennootschapsbelasting</label><br>
+        <label><input type="radio" name="q1" value="indirect"> BTW, douanerechten en internationale handel</label><br>
+        <label><input type="radio" name="q1" value="tech"> De impact van technologie op fiscale processen</label><br>
+        
+        <p>2. Welke sector spreekt je het meest aan?</p>
+        <label><input type="radio" name="q2" value="direct"> Internationale bedrijven en fiscale wetgeving</label><br>
+        <label><input type="radio" name="q2" value="indirect"> Grensoverschrijdende handel en supply chains</label><br>
+        <label><input type="radio" name="q2" value="tech"> Innovatie en digitalisering in de fiscale praktijk</label><br>
+        
+        <p>3. Hoe zie jij je toekomstige carrière?</p>
+        <label><input type="radio" name="q3" value="direct"> Belastingadviseur of fiscalist bij een groot kantoor</label><br>
+        <label><input type="radio" name="q3" value="indirect"> Specialist in indirecte belastingen bij een multinational</label><br>
+        <label><input type="radio" name="q3" value="tech"> Fiscaal professional met inzicht in digitale processen en AI</label><br>
+        
+        <p>4. Wat vind je belangrijk in je studie?</p>
+        <label><input type="radio" name="q4" value="direct"> Diepgaande analyse van fiscale wet- en regelgeving</label><br>
+        <label><input type="radio" name="q4" value="indirect"> Praktische toepassing van fiscale regels in internationale context</label><br>
+        <label><input type="radio" name="q4" value="tech"> Het begrijpen van digitale innovaties in belastingheffing</label><br>
+        
+        <p>5. Wat spreekt je het meeste aan?</p>
+        <label><input type="radio" name="q5" value="direct"> Strategische fiscale planning en advies</label><br>
+        <label><input type="radio" name="q5" value="indirect"> Beheer van BTW en accijnzen voor internationale handel</label><br>
+        <label><input type="radio" name="q5" value="tech"> Het analyseren van de rol van technologie in de fiscaliteit</label><br>
+        
+        <button type="button" onclick="calculateResult()">Ontdek jouw specialisatie</button>
+    </form>
+    
+    <h2 id="result"></h2>
+</body>
+</html>
